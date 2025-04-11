@@ -1,0 +1,13 @@
+{
+	"name": "github_conexion",
+	"properties": {
+		"description": "Extract http information from GitHub",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
