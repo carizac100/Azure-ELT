@@ -5,9 +5,14 @@
 			{
 				"name": "ForAllTheFilesloop",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ValidationGitHub",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -96,9 +101,14 @@
 			{
 				"name": "ValidationGitHub",
 				"type": "Validation",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "variable",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
@@ -122,7 +132,29 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://github.com/anshlambagit/Netflix_Azure_Data_Engineering_Project/tree/main/RawData_AND_Notebooks"
+					"method": "GET",
+					"url": "https://raw.githubusercontent.com/anshlambagit/Netflix_Azure_Data_Engineering_Project/refs/heads/main/RawData_AND_Notebooks/netflix_cast.csv"
+				}
+			},
+			{
+				"name": "variable",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GitHubMetaData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "githubmetadata",
+					"value": ""
 				}
 			}
 		],
@@ -147,6 +179,11 @@
 						"file_name": "netflix_directors.csv"
 					}
 				]
+			}
+		},
+		"variables": {
+			"githubmetadata": {
+				"type": "String"
 			}
 		},
 		"annotations": []
