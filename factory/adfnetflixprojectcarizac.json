@@ -1,0 +1,9 @@
+{
+	"name": "adfnetflixprojectcarizac",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d87ed522-5c96-453e-aa44-07a001fa0c01",
+		"tenantId": "97bedcf7-e17f-42bd-97ab-5aa724846f5f"
+	}
+}
